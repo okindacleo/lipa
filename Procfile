@@ -1,1 +1,1 @@
-web: gunicorn crm.wsgi --log-file -
+web: gunicorn lipa.wsgi --log-file -

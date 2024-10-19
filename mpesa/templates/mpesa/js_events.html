@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="styles.css">
+	<title>JavaScript</title>
+	<style>
+		img {
+			width: 200px;
+			height: 300px;
+		}
+		.hide {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>JavaScript Events</h1>
+	</header>
+	<main>
+		<!--h4>Add Numbers:</h4>
+		<p>
+			<input id="num-one"> + <input id="num-two">
+		</p>
+		<p id="add-sum"></p-->
+		<h4>Pictures</h4>
+		<ul>
+			<li><a data-img="simon-pic" id="simon" href="#">Simon Cowell</a></li>
+			<li><a data-img="bruce-pic" id="bruce" href="#">Bruce Willis</a></li>
+			<li><a data-img="ben-pic" id="ben" href="#">Ben Carson</a></li>
+		</ul>
+
+		<img class="hide" id="simon-pic" src="http://upload.wikimedia.org/wikipedia/commons/a/aa/Simon_Cowell_in_December_2011.jpg">
+
+		<img class="hide" id="bruce-pic" src="http://upload.wikimedia.org/wikipedia/commons/0/03/Bruce_Willis_by_Gage_Skidmore.jpg">
+
+		<img class="hide" id="ben-pic" src="https://carsonscholars.org/files/imce/bccurrent.jpg" alt="">
+
+	</main>
+
+	<!--script type="text/javascript" src="{% static 'mpesa/js/js_events.js' %}"></script-->
+	<script type="text/javascript" src="/projects/crm/mpesa/static/mpesa/js/js_events.js"></script>
+</body>
+</html>

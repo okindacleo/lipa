@@ -1,0 +1,91 @@
+{% extends 'mpesa/base.html' %}
+{% load static %}
+
+{%  block content %} 
+	<head>
+	{% if title %}
+		<title>lnm_simulate_c2b</title>
+	{% endif %}
+
+	{% if c2bmpesa_pay %}
+		<link rel="stylesheet" type="text/css" href="{% static 'mpesa/css/c2bmpesa_pay.css' %}">
+	{% endif %}
+
+
+	</head>
+	<body>
+		<div class="container h-100">
+			<div class="d-flex justify-content-center h-100">
+				<div class="user_card">
+					<div class="d-flex justify-content-center">
+						<b><h5 id="form-title">LIPA NA MPESA(C2B)</h5></b>
+					</div>
+					<div class="d-flex justify-content-center form_container">
+						<form method="POST" action="{% url 'c2b-mpesapay' %}">
+							{% csrf_token %}
+
+							<div class="input-group mb-2">
+								<div class="input-group-append">
+									<span class="input-group-text">Account&nbsp;<i class="fas fa-user"></i></span>{{c2b_form.account_number}}
+								</div>
+							</div>
+
+							<div class="input-group mb-2">
+								<div class="input-group-append">
+									<span class="input-group-text">Amount&nbsp;&nbsp;<i class="fas fa-dollar-sign mr-1"></i></span>{{c2b_form.amount}}
+								</div>	
+							</div>
+
+
+							<div class="d-flex justify-content-center mt-3 login_container">
+					 			<button id="btn-pay" onclick="return confirm('Do you wamt to pay Ksh. to XYZ LTD.?')" class="btn btn-primary btn-lg" type="submit" >PAY NOW</button>
+					   		</div>
+
+						</form>
+
+					</div>
+
+					<div class="mt-3">
+						<div class="d-flex justify-content-center links">
+							<b>STK PUSH?<a href="{% url 'mpesapay' %}" id="link-title" class="ml-2">Click Here</a></b>
+						</div>
+					</div>
+
+					<div class="mt-3">
+						<div class="d-flex justify-content-center links">
+							<b>TRANSACTION STATUS<a href="{% url 'transaction-status' %}" id="link-title" class="ml-2">Click Here</a></b>
+						</div>
+					</div>
+
+
+					<div class="mt-3">
+						<div class="d-flex justify-content-center links">
+							 <a href="https://www.linkedin.com/in/cleophas-okinda-3a559a139?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bu0cPfL6wTGGcMX%2BbzSLFcQ%3D%3D" id="link-designer" class="ml-1"><small><i>designed by <b>Cleo</b></i></small></a>
+						</div>
+					</div>			
+					
+				</div>
+			</div>
+		</div>
+
+		<script>
+			/* Because i didnt set placeholder values in forms.py they will be set here using vanilla Javascript
+			//We start indexing at one because CSRF_token is considered and input field 
+			 */
+
+			//Query All input fields
+			
+			var form_fields = document.getElementsByTagName('input')
+			form_fields[1].placeholder='Account Reference..';
+			form_fields[2].placeholder='Ksh..';
+
+			for (var field in form_fields){	
+				form_fields[field].className += ' form-control'
+			}
+			
+		</script>
+	</body>
+
+{% endblock content %}
+
+	

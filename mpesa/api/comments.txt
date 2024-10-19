@@ -1,0 +1,282 @@
+'''
+{'TransactionType': '', 
+'TransID': 'PI301HK0O8', 
+'TransTime': '20210903191404', 
+'TransAmount': '7.00', 
+'BusinessShortCode': '601431', 
+'BillRefNumber': 'NEX0075', 
+'InvoiceNumber': '', 
+'OrgAccountBalance': '', 
+'ThirdPartyTransID': '', 
+'MSISDN': '254708374149', 
+'FirstName': 'John', 
+'MiddleName': 'J.', 
+'LastName': 'Doe'}
+
+'''
+
+
+'''
+def create(self, request):
+print(request.data, 'THIS IS REQUEST.DATA Validation')
+
+
+from rest_framework.response import Response
+return Response({"ResultDesc": 0 })
+
+
+
+def create(self, request):
+context = {
+    "ResultCode": 0,
+    "ResultDesc": "Accepted"
+}
+return JsonResponse(dict(context))
+'''
+#def create(self, request):
+#pass
+
+
+#def create(self, request):
+#print(request.data, 'THIS IS REQUEST.DATA Validation')
+
+#from rest_framework.response import Response
+#return JsonResponse({"ResultCode":"0", "ResultDesc":"Accepted"}, safe=False)
+#return Response({"ResultCode": 0, "ResultDesc":"Accepted"})
+
+
+#def create(self, request):
+#print(request.data, 'THIS IS REQUEST.DATA Validation')
+
+#from rest_framework.response import Response
+#return Response({"ResultCode": 0})
+
+
+
+#read_only_fields = ["Amount","MpesaReceiptNumber","TransactionDate","PhoneNumber"]
+#read_only_fields = ["BillRefNumber","MSISDN","FirstName","MiddleName","LastName"]
+        
+'''
+'id',
+'CheckoutRequestID',
+'MerchantRequestID',
+'ResultCode',
+'ResultDesc',
+'Amount',
+'MpesaReceiptNumber',
+'Balance',
+'TransactionDate',
+'PhoneNumber',
+'''
+
+'''
+def validate_Amount(self, amount):
+print('Running', amount)
+if (amount < 2):
+    raise serializers.ValidationError("The amount is less than 2")
+
+return amount
+'''
+
+
+'''
+def create(self, request):
+
+mpesa_body =request.body.decode('utf-8')
+mpesa_payment = json.loads(mpesa_body)
+print(mpesa_body, 'THIS IS REQUEST.DATA Confirmation')
+
+context = {
+    "ResultCode": 0,
+    "ResultDesc": "Accepted"
+}
+
+return JsonResponse(dict(context))
+'''
+#print(request.data, 'THIS IS REQUEST.DATA Validation')
+
+#from rest_framework.response import Response
+
+#return Response({"ResultCode": 0})
+#return Response({"ResultCode": 0, "ResultDesc":"Accepted"})
+#return JsonResponse({"ResultCode":"0", "ResultDesc":"Accepted"}, safe=False)
+
+'''
+def create(self, request):
+print(request.data, "THIS IS REQUEST.DATA Confirmation")
+
+from rest_framework.response import Response
+return Response({"ResultCode": 0})
+
+'''
+
+
+
+
+'''
+#print(request.data, 'THIS IS REQUEST.DATA')
+serializer = self.get_serializer(data=request.data)
+serializer.is_valid(raise_exception=True)
+
+headers = self.get_success_headers(serializer.data)
+
+print('THIS IS SERIALIZER.DATA', serializer.data)
+
+#self.perform_create(serializer)
+
+#self.perform_create(serializer)
+merchant_request_id = serializer.data['Body']['stkCallback']['MerchantRequestID']
+checkout_request_id = serializer.data['Body']['stkCallback']['CheckoutRequestID']
+resultcode = serializer.data['Body']['stkCallback']['ResultCode']
+resultdesc = serializer.data['Body']['stkCallback']['ResultDesc']
+amount = serializer.data['Body']['stkCallback']['CallbackMetadata']['Item'][0]['Value']
+
+mpesa_receipt_number = serializer.data['Body']['stkCallback']['CallbackMetadata']['Item'][1]['Value']
+balance = '' 
+transaction_date = serializer.data['Body']['stkCallback']['CallbackMetadata']['Item'][3]['Value']
+phone_number = serializer.data['Body']['stkCallback']['CallbackMetadata']['Item'][4]['Value']
+from datetime import datetime
+
+str_tranasaction_date = str(transaction_date)
+
+transaction_datetime = datetime.strptime(str_tranasaction_date, '%Y%m%d%H%M%S')
+
+import pytz
+aware_transaction_datetime = pytz.utc.localize(transaction_datetime)
+print(transaction_datetime, 'this should be an AWARE_TRANSACTION_DATETIME')
+
+
+#from mpesa.models import LNMPOnline
+
+#my_model = LNMPOnline.objects.create(CheckoutRequestID=checkout_request_id, MerchantRequestID=merchant_request_id,Amount=amount,ResultCode=resultcode,ResultDesc=resultdesc,MpesaReceiptNumber=mpesa_receipt_number,Balance=balance,TransactionDate=aware_transaction_datetime,PhoneNumber=phone_number,)
+
+LNMPOnline.objects.create(CheckoutRequestID=checkout_request_id, MerchantRequestID=merchant_request_id,Amount=amount,ResultCode=resultcode,ResultDesc=resultdesc,MpesaReceiptNumber=mpesa_receipt_number,Balance=balance,TransactionDate=aware_transaction_datetime,PhoneNumber=phone_number,)
+
+
+#my_model.save()
+'''
+
+
+
+'''
+def create(self, request):
+print(request.data, 'THIS IS REQUEST.DATA Validation')
+
+from rest_framework.response import Response
+return Response({"ResultCode": 0})
+
+
+if int(request.data['TransAmount']) < 2: #and self.request.data['TransAmount'] !=5:
+
+print('Amount paid should equal to or greater than Ksh. 5')
+return Response('Amount paid should equal to or greater than Ksh. 5')
+return Response({"ResultCode": 1})
+
+
+#else:
+transaction_type = request.data['TransactionType']
+trans_id = request.data['TransID']
+trans_time = request.data['TransTime']
+trans_amount = request.data['TransAmount']
+business_short_code = request.data['BusinessShortCode']
+bill_ref_number = request.data['BillRefNumber']
+invoice_number = request.data['InvoiceNumber']
+org_account_bal = request.data['OrgAccountBalance']
+third_party_trans_id = request.data['ThirdPartyTransID']
+msisdn = request.data['MSISDN']
+first_name = request.data['FirstName']
+middle_name = request.data['MiddleName']
+last_name = request.data['LastName']
+
+
+from datetime import datetime
+str_trans_time = str(trans_time)
+
+transaction_datetime = datetime.strptime(str_trans_time, '%Y%m%d%H%M%S')
+#print(transaction_datetime)
+
+import pytz
+aware_transaction_datetime = pytz.utc.localize(transaction_datetime)
+print(transaction_datetime, 'this should be an AWARE_TRANSACTION_DATETIME')
+
+#from mpesa.models import C2BPayment
+
+#cleo_model = C2BPayment.objects.create(TransactioType=transaction_type, TransID=trans_id, TransTime=trans_time, TransAmount=trans_amount, BusinessShortCode=business_short_code, BillRefNumber=bill_ref_number, InvoiceNumber=invoice_number, OrgAccountBalance=org_account_bal, ThirdPartyTransID=third_party_trans_id, MSISDN=msisdn, FirstName=first_name, MiddleName=middle_name, LastName=last_name,)
+
+#cleo_model.save()
+
+
+from rest_framework.response import Response
+return Response({"ResultCode": 0})
+'''
+
+
+
+'''
+def create(self, request, *args, **kwargs):
+    serializer = self.get_serializer(data=request.data)
+    serializer.is_valid(raise_exception=True)
+
+    self.perform_create(serializer)
+    headers = self.get_success_headers(serializer.data)
+
+    print(serializer.data)
+
+    from rest_framework.response import Response
+
+    return Response(
+        data={
+            "status": 201,
+            "message": "Transaction saved successfully",
+            "data": serializer.data,
+        },
+        status=status.HTTP_201_CREATED,
+        headers=headers
+        )
+
+
+
+def create(self, request):
+    print(request.data, 'THIS IS REQUEST.DATA Confirmation')
+
+    
+    transaction_type = request.data['TransactionType']
+    print(transaction_type, 'THIS IS TRANSACTION TYPE')
+    trans_id = request.data['TransID']
+    trans_time = request.data['TransTime']
+    trans_amount = request.data['TransAmount']
+    business_short_code = request.data['BusinessShortCode']
+    bill_ref_number = request.data['BillRefNumber']
+    invoice_number = request.data['InvoiceNumber']
+    org_account_bal = request.data['OrgAccountBalance']
+    third_party_trans_id = request.data['ThirdPartyTransID']
+    msisdn = request.data['MSISDN']
+    first_name = request.data['FirstName']
+    middle_name = request.data['MiddleName']
+    last_name = request.data['LastName']
+    
+    from mpesa.models import C2BPayment
+
+    cleo_model = C2BPayment.models.create(TransactionType=transaction_type, TransID=trans_id, TransTime=trans_time, TransAmount=trans_amount, BusinessShortCode=business_short_code, BillRefNumber=bill_ref_number, InvoiceNumber=invoice_number, OrgAccountBalance=org_account_bal, ThirdPartyTransID=third_party_trans_id, MSISDN=msisdn, FirstName=first_name, MiddleName=middle_name, LastName=last_name,)
+    
+    
+    cleo_model = C2BPayment.objects.create(TransactionType=transaction_type, 
+                                            TransID=trans_id, 
+                                            TransTime=transaction_datetime, 
+                                            TransAmount=trans_amount, 
+                                            BusinessShortCode=business_short_code, 
+                                            BillRefNumber=bill_ref_number, 
+                                            InvoiceNumber=invoice_number, 
+                                            OrgAccountBalance=org_account_bal, 
+                                            ThirdPartyTransID=third_party_trans_id, 
+                                            MSISDN=msisdn, FirstName=first_name, 
+                                            MiddleName=middle_name, 
+                                            LastName=last_name,)
+
+    cleo_model.save()
+    
+    
+    from rest_framework.response import Response
+    return Response({"ResultCode": 0 })
+'''   
+    

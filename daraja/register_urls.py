@@ -22,8 +22,8 @@ def register_url():
 		#"ConfirmationURL": "https://9a19-197-232-105-30.ngrok.io/api/payments/c2b-confirmation/",
 		#"ValidationURL": "https://9a19-197-232-105-30.ngrok.io/api/payments/c2b-validation/"
 
-		"ConfirmationURL": "https://dundisha.herokuapp.com/api/payments/c2b-confirmation/",
-		"ValidationURL": "https://dundisha.herokuapp.com/api/payments/c2b-validation/"
+		"ConfirmationURL": "https://inject-50d08d8f31b6.herokuapp.com/api/payments/c2b-confirmation/",
+		"ValidationURL": "https://inject-50d08d8f31b6.herokuapp.com/api/payments/c2b-validation/"
 	
 	 	
 	 }

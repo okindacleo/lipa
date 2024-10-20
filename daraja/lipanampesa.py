@@ -48,7 +48,7 @@ def lipa_na_mpesa(phone_number, amount):#, account_ref):
 		"PartyB": keys.business_shortCode,
 		"PhoneNumber": phone_number,
 		#"PhoneNumber": "254708252968",
-		"CallBackURL": "https://dundisha.herokuapp.com/api/payments/lnm/",
+		"CallBackURL": "https://inject-50d08d8f31b6.herokuapp.com/api/payments/lnm/",
 		#"AccountReference": "YM0001",
 		"AccountReference": generate_random_string(),
 		"TransactionDesc": "Hotspot Fees",

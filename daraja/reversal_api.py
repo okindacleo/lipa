@@ -29,8 +29,8 @@ def reverse_c2b_or_b2c(initiator, transaction_id, amount, receiver_party):
 	   "Amount": [amount],
 	   "ReceiverParty": receiver_party, # Reversing to aPaybill number
 	   "RecieverIdentifierType": "4",
-	   "ResultURL":"https://dundisha.herokuapp.com/api/payments/reversal/result/",
-	   "QueueTimeOutURL":"https://dundisha.herokuapp.com/api/payments/reversal/timeout/",
+	   "ResultURL":"https://inject-50d08d8f31b6.herokuapp.com/api/payments/reversal/result/",
+	   "QueueTimeOutURL":"https://inject-50d08d8f31b6.herokuapp.com/api/payments/reversal/timeout/",
 	   "Remarks":"Reversal request for wrong transaction",
 	   "Occasion":"Reversal",
 

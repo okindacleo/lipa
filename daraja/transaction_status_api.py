@@ -30,8 +30,8 @@ def trans_status(transaction_id, initiator):
 	   "OriginatorConversationID":"AG_20190826_0000777ab7d848b9e721",
 	   "PartyA":keys.business_shortCode,
 	   "IdentifierType":"4",
-	   "ResultURL":"https://dundisha.herokuapp.com/api/payments/trans_status/result/",
-	   "QueueTimeOutURL":"https://dundisha.herokuapp.com/api/payments/trans_status/timeout/",
+	   "ResultURL":"https://inject-50d08d8f31b6.herokuapp.com/api/payments/trans_status/result/",
+	   "QueueTimeOutURL":"https://inject-50d08d8f31b6.herokuapp.com/api/payments/trans_status/timeout/",
 	   "Remarks":"Transaction Status Check",
 	   "Occasion":"Checking Status",
 

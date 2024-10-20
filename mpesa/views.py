@@ -71,8 +71,6 @@ def mpesa_pay(request):
 
 
 
-
-
 def transaction_status(request):
 
 	form = CreateTransactionStatusForm()

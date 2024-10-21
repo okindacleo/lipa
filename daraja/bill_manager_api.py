@@ -43,7 +43,7 @@ def bill_manager_opt_in():
 	data = response.json()
 
 
-	print(data)
+	#print(data)
 	#
 	if data["rescode"] == "200":
 		print('SUCCESS! BILL MANAGER OPT-IN')

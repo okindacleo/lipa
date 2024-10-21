@@ -68,9 +68,9 @@ def lipa_na_mpesa(phone_number, amount):#, account_ref):
 
 	data = response.json()
 
-	#print(data)
-	#if data["ResponseCode"] == "0":
-	#print('SUCCESS!! Proceed to PIN Entry')
+	print(data)
+	if data["ResponseCode"] == "0":
+		print('SUCCESS!! Proceed to PIN Entry')
 
 	'''
 	elif data["ResponseCode"] != "0":

@@ -13,6 +13,7 @@ Naked==0.1.32
 packaging==24.1
 psycopg2-binary==2.9.10
 pycryptodome==3.21.0
+python-decouple==3.8
 PyYAML==6.0.2
 render==1.0.0
 requests==2.32.3

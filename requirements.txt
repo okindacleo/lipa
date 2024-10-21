@@ -11,6 +11,7 @@ Jinja2==3.1.4
 MarkupSafe==3.0.1
 Naked==0.1.32
 packaging==24.1
+psycopg2-binary==2.9.10
 pycryptodome==3.21.0
 PyYAML==6.0.2
 render==1.0.0

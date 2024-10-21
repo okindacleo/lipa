@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 import os
 from pathlib import Path
-#from decouple import config
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,8 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*4^i+_x$t8(z^qns+u#@0x01ij*x5ig+1l$!ve^w-i3ki9lnsv'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-#DEBUG = False
+#DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['inject-50d08d8f31b6.herokuapp.com','inject.herokuapp.com', '127.0.0.1']
 
@@ -92,15 +92,10 @@ DATABASES['default'].update(db_from_env)
 #DATABASES['default']["CONN_MAX_AGE"] = 500
  
 
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': "d5p3n828aq9r5a",
-        'USER': "uej17gs362nhdm",
-        'PASSWORD': "pd621e66cf924d3d6cd6002704cf56dc391b9e63fc18a80bd057cd56dd4820672",
-        'HOST': "c6sfjnr30ch74e.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com",
-        'PORT': 5432,
-    }
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+        
 }
 
 

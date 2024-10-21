@@ -12,7 +12,7 @@ class LNMCallbackUrlAPIView(CreateAPIView):
     
 
     def create(self, request):
-        print(request.data, 'this is request.data')
+        print('THIS IS REQUEST.DATA', request.data)
 
         merchant_request_id = request.data["Body"]["stkCallback"]["MerchantRequestID"]
         checkout_request_id = request.data["Body"]["stkCallback"]["CheckoutRequestID"]
@@ -33,7 +33,7 @@ class LNMCallbackUrlAPIView(CreateAPIView):
         aware_transaction_datetime = pytz.utc.localize(transaction_datetime)
         print(transaction_datetime, 'this should be an AWARE_TRANSACTION_DATETIME')
 
-
+        '''
         from mpesa.models import LNMPOnline
 
         my_model = LNMPOnline.objects.create(
@@ -50,7 +50,7 @@ class LNMCallbackUrlAPIView(CreateAPIView):
         
         my_model.save()
 
-
+        '''
         from rest_framework.response import Response
         return Response({"MyResultDesc": "YES!! It worked!"})
 
